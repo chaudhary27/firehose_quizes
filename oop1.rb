@@ -10,9 +10,9 @@ class Card # defining a class
 		puts "#{self.rank} of #{self.suit}"
 	end
 
-	def self.random_card
-		Card.new(rand(10), :spades)
-	end
+	#def self.random_card
+	#	Card.new(rand(10), :spades)
+	#end
 end
 
 class Deck
