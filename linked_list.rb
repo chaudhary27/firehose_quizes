@@ -37,8 +37,10 @@ class Stack
     # Push a value onto the stack
     def push(value)
         # IMPLEMENT ME!
+        # check it data is empty
         if data.nil?
         	data = LinkedListNode(value, nil)
+        # if not do something
         else
         	data = LinkedListNode(value, data)
     end
