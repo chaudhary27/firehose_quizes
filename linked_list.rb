@@ -64,7 +64,7 @@ def reverse_list(list)
     while list
         # ADD CODE HERE
         # While list what?
-        list = list.next_node
+        
     end
 
     # ADD CODE HERE
