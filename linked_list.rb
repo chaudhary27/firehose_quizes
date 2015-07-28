@@ -28,58 +28,67 @@ node3 = LinkedListNode.new(12, node2)
 
 
 class Stack
-    attr_reader :data
+    attr_reader :head
     
     def initialize
-        @data = nil
+        @head = nil
     end
 
     # Push a value onto the stack
     def push(value)
-        # IMPLEMENT ME!
-        # check it data is empty
-        if data.nil?
-        	data = LinkedListNode(value, nil)
-        # if not do something
-        else
-        	data = LinkedListNode(value, data)
+        @head = LinkedListNode.new(value, @head)
     end
 
     # Pop an item off the stack.  
     # Remove the last item that was pushed onto the
     # stack and return the value to the user
     def pop
-        # I RETURN A VALUE
-        popped = data.value
+        # making sure head is not nil
+        if head == nil
+            return false
+        end
+        popped = @head.value
         # shifting the data
-        data = data.next_node
+        @head = head.next_node
+
+        return popped
     end
 
 end
 
 def reverse_list(list)
-    # ADD CODE HERE
-    #list = Sack.pop
 
-    while list
-        # ADD CODE HERE
-        # While list what?
-        
+    new_list = Stack.new
+    
+    while list.head
+        head = list.pop
+        new_list.push(head)
     end
 
-    # ADD CODE HERE
+    return new_list
 end
 
 
+stack = Stack.new
+stack.push(1)
+stack.push(2)
+stack.push(3)
+
+new_stack = reverse_list(stack)
+new_stack = reverse_list(new_stack)
+
+while new_stack.head
+    puts new_stack.pop
+end
 
 
 print_values(node3)
 
 puts "-------"
 
-revlist = reverse_list(node3)
+#revlist = reverse_list(node3)
 
-print_values(revlist)
+#print_values(revlist)
 
 
 
