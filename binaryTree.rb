@@ -1,13 +1,13 @@
 
 class BinaryTree
 	attr_accessor :payload, :left, :right
-	def initialize(left=nil, right=nil, payload)
+	def initialize(payload, left=nil, right=nil)
 		@payload = payload
 		@left = left
 		@right = right
 	end
 
-	def bTree(unsorted_array) 
+	def bTree(unsorted_array)
 
 		first_element = unsorted_array[0] # taking first value in unsorted_array and setting it equal to first_element
 		@base_of_tree = BinaryTree.new(first_element) #building BinaryTree class with that first_element as base_of_tree
