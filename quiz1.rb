@@ -11,3 +11,16 @@ words.each do |word|
 	print first+scramble+last+" "
 end
 
+#
+
+def solution(sentence)
+  words = sentence.split()
+  temp_array = []
+  words.size.times do
+    temp_array << words.pop
+  end
+  temp_array.join(" ")
+  
+end
+
+#

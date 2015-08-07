@@ -1,10 +1,14 @@
+#require 'test/unit'
+#require 'factory_girl'
 
 class BinaryTree
-	attr_accessor :payload, :left, :right
+	attr_accessor :payload, :left, :right, :sorted
 	def initialize(payload, left=nil, right=nil)
-		@payload = payload
+		@payload = payload[0]
 		@left = left
 		@right = right
+
+		bTree(payload)
 	end
 
 	def bTree(unsorted_array)
@@ -16,8 +20,9 @@ class BinaryTree
 			puts "number =  #{number}"
 			insert(number, @base_of_tree)
 			end
-		@sorted_array = []
-		treeTraverse
+			
+		@sorted_array = []	
+		@sorted = treeTraverse
 	end
 
 	def insert(number, base_of_tree)
@@ -60,16 +65,33 @@ end
 
 
 
+
 unsorted_array = [7,4,9,1,6,14,10]
-sorted_array_1 = BinaryTree.new(unsorted_array[0])
-sorted_array = sorted_array_1.bTree(unsorted_array)
+sorted_array_1 = BinaryTree.new(unsorted_array)
+sorted_array = sorted_array_1.sorted
 print "sorted_array = "
 print sorted_array
 puts "\n"
 
 
+=begin
+FactoryGirl.define do
+	factory :unsorted_array do
+		data [7,4,9,1,6,14,10]
+	end
+end
 
 
+class Test::Unit::TestCase
+  include FactoryGirl::Syntax::Methods
+  test 'sorted_array' do
+  	array_object = FactoryGirl.create(:unsorted_array)
+  	sorted_array_1 = BinaryTree.new(array_object.data[0])
+  	sorted_array = sorted_array_1.bTree(array_object.data[0])
+
+  end
+end
+=end
 
 
 
