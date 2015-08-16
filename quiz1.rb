@@ -11,7 +11,7 @@ words.each do |word|
 	print first+scramble+last+" "
 end
 
-#
+=begin
 
 def solution(sentence)
   words = sentence.split()
@@ -23,4 +23,4 @@ def solution(sentence)
   
 end
 
-#
+=end
