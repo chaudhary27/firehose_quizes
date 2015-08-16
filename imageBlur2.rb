@@ -1,3 +1,5 @@
+require 'minitest/autorun'
+
 class Image
 	attr_accessor :pixels
 
@@ -36,21 +38,36 @@ class Image
 	end
 
 	def output_tranformed_pixels
-		pixels.each do |element|
-			puts element.join
-		end
+		string_of_pixels = @pixels.join("")
+		result = string_of_pixels.scan(/.{1,4}/).join("\n")
+		puts result
+		result
 	end
 
 end
 
-
+=begin
 image = Image.new([
 			[0,0,0,0],
 			[0,1,0,0],
-			[0,0,0,1],
+			[0,0,0,0],
 			[0,0,0,0]
 		])
 
-image.index_of_ones
-image.transform_pixels
-image.output_tranformed_pixels
+=end
+
+
+class TestStack < MiniTest::Test
+	def test_image_blur_output
+		image = Image.new([
+		[0, 0, 0, 0],
+		[0, 1, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0]
+		])
+		image.index_of_ones
+		image.transform_pixels
+		output = image.output_tranformed_pixels
+		assert_equal "0100\n1110\n0100\n0000", output
+	end
+end
