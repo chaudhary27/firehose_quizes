@@ -2,7 +2,7 @@
 # Build a Reverse LinkedList WITHOUT using Arryas
 class LinkedListNode
   attr_accessor :value, :next_node
- 
+
   def initialize(value, next_node=nil)
     @value = value
     @next_node = next_node
@@ -29,7 +29,7 @@ node3 = LinkedListNode.new(12, node2)
 
 class Stack
     attr_reader :head
-    
+
     def initialize
         @head = nil
     end
@@ -39,7 +39,7 @@ class Stack
         @head = LinkedListNode.new(value, @head)
     end
 
-    # Pop an item off the stack.  
+    # Pop an item off the stack.
     # Remove the last item that was pushed onto the
     # stack and return the value to the user
     def pop
@@ -65,49 +65,51 @@ class Stack
         return popped
     end
 
-end
+    def reverse_list(list)
 
-def reverse_list(list)
+        new_list = Stack.new
 
-    new_list = Stack.new
-    
-    while list.head
-        head = list.pop
-        new_list.push(head)
-    end
-
-    return new_list
-end
-
-def reverse_list_mutation(list)
-    
-    original_head = list.head
-    head = list.pop_node
-    puts head.value
-    head.next_node = nil
-    puts head == original_head
-
-    until head.value.nil?
-        _head = head
-        head = list.pop_node
-        if head == false
-            break
+        while list.head
+            head = list.pop
+            new_list.push(head)
         end
-        head.next_node = _head
+
+        return new_list
     end
 
-return list
+    def reverse_list_mutation(list)
+
+        original_head = list.head
+        head = list.pop_node
+        puts head.value
+        head.next_node = nil
+        puts head == original_head
+
+        until head.value.nil?
+            _head = head
+            head = list.pop_node
+            if head == false
+                break
+            end
+            head.next_node = _head
+        end
+
+        return list
+
+    end
 
 end
+
+
 
 stack = Stack.new
 stack.push(1)
 stack.push(2)
 stack.push(3)
 
-new_stack = reverse_list(stack)
+new_stack = Stack.reverse_list(stack)
 
-new_stack = reverse_list(new_stack)
+new_stack = Stack.reverse_list(new_stack)
 
 while new_stack.head
     puts new_stack.pop
@@ -123,13 +125,3 @@ stack.push(2)
 stack.push(3)
 new_stack = reverse_list_mutation(stack)
 print_values(new_stack.head)
-
-
-
-
-
-
-
-
-
-
