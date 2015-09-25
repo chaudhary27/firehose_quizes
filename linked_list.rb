@@ -2,10 +2,20 @@
 # Build a Reverse LinkedList WITHOUT using Arryas
 class LinkedListNode
   attr_accessor :value, :next_node
- 
+
   def initialize(value, next_node=nil)
     @value = value
     @next_node = next_node
+  end
+
+  def print_values
+      print "#{self.value} --> "
+      if self.next_node.nil?
+        print "nil\n"
+        return
+      else
+        self.next_node.print_values
+      end
   end
 
 end
@@ -29,7 +39,7 @@ node3 = LinkedListNode.new(12, node2)
 
 class Stack
     attr_reader :head
-    
+
     def initialize
         @head = nil
     end
@@ -39,7 +49,7 @@ class Stack
         @head = LinkedListNode.new(value, @head)
     end
 
-    # Pop an item off the stack.  
+    # Pop an item off the stack.
     # Remove the last item that was pushed onto the
     # stack and return the value to the user
     def pop
@@ -70,7 +80,7 @@ end
 def reverse_list(list)
 
     new_list = Stack.new
-    
+
     while list.head
         head = list.pop
         new_list.push(head)
@@ -80,7 +90,7 @@ def reverse_list(list)
 end
 
 def reverse_list_mutation(list)
-    
+
     original_head = list.head
     head = list.pop_node
     puts head.value
@@ -114,7 +124,7 @@ while new_stack.head
 end
 
 
-print_values(node3)
+#print_values(node3)
 
 puts "-------"
 stack = Stack.new
@@ -122,14 +132,4 @@ stack.push(1)
 stack.push(2)
 stack.push(3)
 new_stack = reverse_list_mutation(stack)
-print_values(new_stack.head)
-
-
-
-
-
-
-
-
-
-
+new_stack.head.print_values
